@@ -1,0 +1,34 @@
+{
+  "name": "storybook-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/storybook",
+  "projectType": "application",
+  "tags": ["scope:docs", "type:application"],
+  "targets": {
+    "test:a11y": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/packages/components/src/**/*.{ts,tsx,css.ts,stories.tsx}"
+      ],
+      "options": {
+        "command": "vitest run --passWithNoTests --project=storybook-a11y",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "generate-llms": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-storybook"],
+      "options": {
+        "commands": [
+          "storybook-llms-extractor --config llms.config.js",
+          "npx tsx ../../scripts/generate-llms-full.ts"
+        ],
+        "cwd": "{projectRoot}",
+        "parallel": false
+      }
+    }
+  }
+}

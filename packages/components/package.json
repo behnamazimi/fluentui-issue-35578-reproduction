@@ -1,0 +1,60 @@
+{
+  "name": "design-system-components",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/es/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/es/index.d.ts",
+        "default": "./dist/es/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./*": {
+      "import": {
+        "types": "./dist/es/*/index.d.ts",
+        "default": "./dist/es/*/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/*/index.d.ts",
+        "default": "./dist/cjs/*/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "nx build design-system-components"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "@vanilla-extract/css": "^1.17.4",
+    "@vanilla-extract/recipes": "^0.5.0",
+    "clsx": "^2.1.1",
+    "react-aria-components": "^1.13.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@vanilla-extract/vite-plugin": "^5.1.1",
+    "dotenv": "^17.2.3",
+    "tsx": "^4.20.6",
+    "vite": "^7.1.12",
+    "vite-bundle-analyzer": "^1.2.3",
+    "vite-plugin-dts": "^4.3.0"
+  }
+}

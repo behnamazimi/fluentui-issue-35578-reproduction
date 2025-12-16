@@ -1,0 +1,13 @@
+<script>
+(function() {
+    var THEME_STORAGE_KEY = 'design-system-theme';
+    var themes = ['Light', 'Dark'];
+    var defaultTheme = 'Light';
+    
+    var storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    var selectedTheme = themes.includes(storedTheme) ? storedTheme : defaultTheme;
+    
+    // Expose for the decorator to read
+    window.__ODS_THEME__ = selectedTheme;
+})();
+</script>
