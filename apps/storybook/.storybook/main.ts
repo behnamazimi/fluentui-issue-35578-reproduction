@@ -1,5 +1,6 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import remarkGfm from "remark-gfm";
+import path from "path";
 
 import { nxViteTsPaths } from "@nx/vite/plugins/nx-tsconfig-paths.plugin";
 import { mergeConfig, type UserConfig } from "vite";
@@ -33,6 +34,24 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["./public"],
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      // Use absolute path to tsconfig
+      tsconfigPath: path.resolve(__dirname, "../../../tsconfig.base.json"),
+      // Include all tsx files in packages
+      include: [
+        path.resolve(__dirname, "../../../packages/**/*.tsx"),
+      ],
+      // Exclude stories and test files
+      exclude: [
+        "**/node_modules/**",
+        "**/*.stories.tsx",
+        "**/*.test.tsx",
+      ],
+    },
+  },
 
   viteFinal: async (config: UserConfig) =>
     mergeConfig(config, {

@@ -1,5 +1,5 @@
 module.exports = {
-  distPath: "apps/storybook/storybook-static",
+  distPath: "storybook-static",
   summaryBaseUrl: "https://example.com",
   summaryTitle: "Design System",
   summaryDescription:

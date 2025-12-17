@@ -23,8 +23,7 @@
       "dependsOn": ["build-storybook"],
       "options": {
         "commands": [
-          "storybook-llms-extractor --config llms.config.js",
-          "npx tsx ../../scripts/generate-llms-full.ts"
+          "storybook-llms-extractor --config llms.config.js"
         ],
         "cwd": "{projectRoot}",
         "parallel": false
